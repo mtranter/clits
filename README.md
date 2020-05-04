@@ -24,7 +24,7 @@ class CardDeets {
     @Argument({
         alias: "c",
         required: true,
-        description: "The person's name"
+        description: "Your card number"
     })
     @IsCreditCard()
     public cardNumber: string
@@ -39,7 +39,7 @@ class CardDeets {
     @Argument({
         alias: "e",
         required: true,
-        description: "The name on your card"
+        description: "Card expiry"
     })
     @Type(() => Date)
     public expiry: Date
