@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "noImplicitAny": true,
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "listFiles": false,
+    "lib": ["es6"],
+  },
+  "exclude": [
+    ".vscode",
+    ".git",
+    "./local",
+    "./tests",
+    "node_modules",
+    "src/**/*.spec.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false
+}

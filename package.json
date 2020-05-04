@@ -1,0 +1,37 @@
+{
+  "name": "clits",
+  "version": "0.1.0",
+  "description": "CLI TypeScript Library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Mark Tranter <mark.tranter@engitano.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "build": "rm -rf ./dist & tsc"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.2.1",
+    "@types/minimist": "^1.2.0",
+    "@types/node": "^13.13.4",
+    "babel-jest": "^25.5.1",
+    "jest": "^25.5.4",
+    "reflect-metadata": "^0.1.13",
+    "ts-jest": "^25.4.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/figlet": "^1.2.0",
+    "class-transformer": "^0.2.3",
+    "class-transformer-validator": "^0.8.0",
+    "class-validator": "^0.12.2",
+    "figlet": "^1.4.0",
+    "minimist": "^1.2.5"
+  }
+}
