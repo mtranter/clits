@@ -14,7 +14,6 @@ export type ArgumentDefinition = {
 
 type RequiredArgumentDefinition = ArgumentDefinition & { name: string, property: string }
 
-export const argumentMetadataKey = Symbol("Argument")
 class ArgumentStore {
     private static store: { [key: string]: Array<RequiredArgumentDefinition> } = {}
     public static pushArgument(clazz: string, arg: RequiredArgumentDefinition): void {
@@ -39,7 +38,7 @@ type CommandHandler = (args: minimist.ParsedArgs) => Promise<any>
 
 export class CliApp {
     private readonly _handlers: Record<string, CommandHandler>;
-    _appName: string;
+    private readonly _appName: string;
 
     constructor(appName: string, handlers: Record<string, CommandHandler> = {}) {
         this._handlers = handlers
@@ -96,7 +95,7 @@ class IsValidArgument implements ValidatorConstraintInterface {
     }
 
     defaultMessage?(args?: ValidationArguments) {
-        return `Parameter --`
+        return `Parameter --${this._argDef.name} is invalid or not supplied`
     }
 }
 
