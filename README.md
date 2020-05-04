@@ -4,6 +4,10 @@ _**C**ommand **L**ine **I**nterface app builder for **T**ype**S**cript._
 
 Get your mind out of the gutter.
 
+Strong typing for your CLI apps.
+
+Validation using class-validator and class-transformer
+
 ## Usage
 
 > index.ts
@@ -12,6 +16,7 @@ Get your mind out of the gutter.
 
 import { CliApp } from 'clits'
 import { Type } from 'class-transformer';
+import { IsCreditCard } from 'class-validator'
 import { MySideProject } from './side-project'
 
 const myRetirement = new MySideProject();
@@ -21,6 +26,7 @@ class CardDeets {
         required: true,
         description: "The person's name"
     })
+    @IsCreditCard()
     public cardNumber: string
 
     @Argument({
