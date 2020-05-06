@@ -65,8 +65,8 @@ export class CliApp {
                     return transformAndValidate<T>(t, parsedArgs)
                         .then(handler)
                         .catch(e => {
-                            this._logger.log(getCommandString(name, argDefs))  
-                            throw e;                          
+                            this._logger.log(getCommandString(name, argDefs))
+                            throw e;
                         })
                 }
                 return new CliApp(this._appName, Object.assign({}, this._handlers, { [name]: commandHandler }))
@@ -77,7 +77,7 @@ export class CliApp {
     run(cargs = process.argv.slice(2)): Promise<any> {
         return new Promise((resolve, reject) => {
             figlet(this._appName, "Larry 3D", (err, data) => {
-                if(process.stdout.isTTY)
+                if (process.stdout.isTTY)
                     console.log(data)
                 const parsed = minimist(cargs)
                 const command = parsed._[0]
