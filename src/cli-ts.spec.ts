@@ -21,30 +21,51 @@ class ShowPersonParams {
     public dob: Date
 }
 
-class PrintArgsParams {
+class FetchPersonParams {
     @Argument({
-        alias: "a",
+        alias: "p",
         required: true
     })
-    public arg: string
+    public personId: number
 }
 
 
 describe("CliApp", () => {
 
+    const myProgram = {
+        showPerson: (console: {log: (s: String) => void}) => (p: ShowPersonParams): void => {
+            const msg = `Name: ${p.name}, age: ${p.age}, dob: ${p.dob}`
+            console.log(msg)
+        }
+    }
+
     const testApp = new CliApp("Test CLITS")
         .command("show-person", ShowPersonParams)
         .handle(p => p)
-        .command("print-args", PrintArgsParams)
+        .command("fetch-person", FetchPersonParams)
         .handle(a => console.dir(a))
 
     it("should decorate proerty", () => {
-        process.argv = "show-person -n John --age 32 --dob 2000-01-01".split(" ")
-        const johnPromise = testApp.run()
+        const args = "show-person -n John --age 32 --dob 2000-01-01".split(" ")
+        const johnPromise = testApp.run(args)
         return expect(johnPromise).resolves.toMatchObject({
             name: "John",
             age: 32,
             dob: new Date(Date.parse('2000-01-01'))
         })
+    })
+    it("Should return error on required argument not supplied", async () => {
+        class Required {
+            @Argument({
+                required: true
+            })
+            requireMe: boolean
+        }
+        const logErr = jest.fn()
+        new CliApp("test")
+            .command("sommat", Required)
+            .handle(logErr)
+            .run(["sommat"])
+        expect(logErr).not.toHaveBeenCalled()
     })
 })

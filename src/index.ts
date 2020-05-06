@@ -1,1 +1,1 @@
-export { ArgumentDefinition, CliApp } from './cli-ts';
+export { ArgumentDefinition, CliApp, Argument } from './cli-ts';
