@@ -9,8 +9,20 @@ jobs:
             node-version: latest
         - run: yarn coverage
         - run: yarn dist
+        - run: mv ./clits-*.tgz ./clits.tgz
         - persist_to_workspace:
             root: "."
+            paths:
+                - ./clits.tgz
+    deploy:
+        docker:
+          - image: 'cimg/base:stable'
+        steps:
+          - checkout
+          - node/install:
+              install-yarn: true
+              node-version: latest
+          - run: yarn publish ./clits.tgz
 orbs:
     node: circleci/node@x.y
 version: 2.1
