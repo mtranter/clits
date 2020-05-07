@@ -10,7 +10,7 @@ jobs:
           node-version: latest
       - run: yarn install
       - run: yarn coverage
-      - run: yarn build
+      - run: yarn build & yarn pack
       - run: mv ./clits-*.tgz ./clits.tgz
       - persist_to_workspace:
           root: "."
