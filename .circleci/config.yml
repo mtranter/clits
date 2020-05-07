@@ -21,7 +21,7 @@ jobs:
       - node/install:
           install-yarn: true
           node-version: latest
-      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/repo/.npmrc
+      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ./.npmrc
       - run: yarn publish --new-version ${CIRCLE_TAG} --registry //registry.npmjs.org/:_authToken=${NPM_TOKEN} --access public
 orbs:
   node: circleci/node@2.1.0
