@@ -8,6 +8,7 @@ jobs:
       - node/install:
           install-yarn: true
           node-version: latest
+      - run: yarn install
       - run: yarn coverage
       - run: yarn dist
       - run: mv ./clits-*.tgz ./clits.tgz
