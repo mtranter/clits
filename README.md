@@ -48,12 +48,13 @@ class CardDeets {
 const makeDatMoney = new CliApp("My CLI App")
     .command("get-paid", CardDeets)
     .handle(cardDeets => myRetirement.bitchPayMe(cardDeets))
-
+    .run()
 ```
 
 Then...
 ```bash
 $> tsc
+$> chmod +x ./dist/index.js
 $> ./dist/index.js get-paid \
         --cardNumber 1234-5678-1234-1111 \  
         --cardName "John Smith" \

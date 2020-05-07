@@ -9,21 +9,23 @@ jobs:
             node-version: latest
         - run: yarn coverage
         - run: yarn dist
-  orbs:
+        - persist_to_workspace:
+            root: "."
+orbs:
     node: circleci/node@x.y
-  version: 2.1
-  workflows:
+version: 2.1
+workflows:
     default:
-      jobs:
+        jobs:
         - build_and_test:
             filters:
-              tags:
+                tags:
                 only: /.*/
         - deploy:
             requires:
-              - build_and_test
+                - build_and_test
             filters:
-              tags:
+                tags:
                 only: /^v.*/
-              branches:
+                branches:
                 ignore: /.*/
