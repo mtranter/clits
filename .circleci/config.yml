@@ -22,7 +22,7 @@ jobs:
       - image: 'cimg/base:stable'
     working_directory: ~/project
     steps:
-      - attach_workspace
+      - attach_workspace:
           at: ~/project
       - node/install:
           install-yarn: true
