@@ -11,7 +11,6 @@ jobs:
           node-version: latest
       - run: yarn install
       - run: yarn coverage
-      - run: yarn build
   deploy:
     docker:
       - image: 'cimg/base:stable'
@@ -21,6 +20,7 @@ jobs:
       - node/install:
           install-yarn: true
           node-version: latest
+      - run: yarn build
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ./.npmrc
       - run: npm publish --access=public
 orbs:
