@@ -1,5 +1,5 @@
 {
-  "name": "clits",
+  "name": "@mtranter/clits",
   "version": "0.1.8",
   "description": "CLI TypeScript Library",
   "main": "dist/index.js",

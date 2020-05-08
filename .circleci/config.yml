@@ -22,7 +22,7 @@ jobs:
           install-yarn: true
           node-version: latest
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ./.npmrc
-      - run: npm publish --access public
+      - run: npm publish --access=public
 orbs:
   node: circleci/node@2.1.0
 workflows:
