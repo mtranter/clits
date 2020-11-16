@@ -20,7 +20,7 @@ import { IsCreditCard } from 'class-validator'
 import { MySideProject } from './side-project'
 
 const myRetirement = new MySideProject();
-class CardDeets {
+class CardDetails {
     @Argument({
         alias: "c",
         required: true,
@@ -45,9 +45,9 @@ class CardDeets {
     public expiry: Date
 }
 
-const makeDatMoney = new CliApp("My CLI App")
-    .command("get-paid", CardDeets)
-    .handle(cardDeets => myRetirement.bitchPayMe(cardDeets))
+const makeMoney = new CliApp("My CLI App")
+    .command("get-paid", CardDetails)
+    .handle(cardDeets => myRetirement.takePayment(cardDeets))
     .run()
 ```
 
