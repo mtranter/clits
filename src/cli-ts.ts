@@ -65,6 +65,7 @@ export class CliApp {
                     return transformAndValidate<T>(t, parsedArgs)
                         .then(handler)
                         .catch(e => {
+                            this._logger.error(e)
                             this._logger.log(getCommandString(name, argDefs))
                             throw e;
                         })
