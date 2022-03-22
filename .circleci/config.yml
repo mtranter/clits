@@ -2,30 +2,23 @@ version: 2.1
 jobs:
   build_and_test:
     docker:
-      - image: 'cimg/base:stable'
+      - image: 'cimg/node:14.19.1'
     working_directory: ~/project
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: latest
       - run: yarn install
       - run: yarn coverage
   deploy:
     docker:
-      - image: 'cimg/base:stable'
+      - image: 'cimg/node:14.19.1'
     working_directory: ~/project
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: latest
       - run: yarn install
       - run: yarn build
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ./.npmrc
       - run: npm publish --access=public
-orbs:
-  node: circleci/node@2.1.0
+
 workflows:
   default:
     jobs:
