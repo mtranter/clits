@@ -1,6 +1,6 @@
 {
   "name": "@mtranter/clits",
-  "version": "0.1.12",
+  "version": "0.1.15",
   "description": "CLI TypeScript Library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,7 +34,7 @@
     "class-transformer-validator": "^0.8.0",
     "class-validator": "^0.12.2",
     "figlet": "^1.4.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "reflect-metadata": "^0.1.13"
   }
 }
